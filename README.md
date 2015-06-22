@@ -1,3 +1,3 @@
 # aquariuni
-Smart Aquarium Project for Uni
+Smart Aquarium Project for IliaUni
 
