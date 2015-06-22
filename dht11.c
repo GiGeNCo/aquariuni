@@ -1,5 +1,5 @@
 /*
- * aquariuni/humidity.c
+ * aquariuni/dht11.c
  *
  *  Copyleft (C)  2015  IliaUni Robotics TeaM
  *
@@ -9,26 +9,37 @@
 
 
 #include "stdinc.h"
+#include "dht11.h"
 
-/* Defs */ 
-#define MAX_TIME 85
-#define DHT11PIN 7
-#define DHT11VAL 5
 
 /* Initialize sensor values */
 int dht11_val[DHT11VAL] = {0, 0, 0, 0, 0};
+
+
+/* 
+ * init_dht_val - Initialize temperature and humidity sensor values 
+ * Argument dhtsv is pointer of DHTSensorValues structure.
+ */
+void init_dht_val(DHTSensorValues *dhtsv) 
+{
+    dhtsv->humidity = 0;
+    dhtsv->celsius = 0;
+    dhtsv->farenheit = 0;
+    dhtsv->humidity_min = 0;
+    dhtsv->celsius_min = 0;
+}
 
 
 /*
  * dht11_read_val - Function reads data from DHT11 
  * sensor and prints in terminal via printf() function,
  */   
-void dht11_read_val()
+int dht11_read_val(DHTSensorValues *dhtsv)
 {
     /* Used variables */
-    uint8_t lststate=HIGH;
-    uint8_t counter=0;
-    uint8_t j=0,i;
+    uint8_t lststate = HIGH;
+    uint8_t counter = 0;
+    uint8_t j = 0, i;
     float farenheit;
 
     /* Make sure sensor values ar zero */
@@ -69,32 +80,18 @@ void dht11_read_val()
     /* Verify cheksum and print the verified data */
     if((j>=40) && (dht11_val[4] == ((dht11_val[0] + dht11_val[1] + dht11_val[2] + dht11_val[3])& 0xFF)))
     {
-        farenheit=dht11_val[2]*9./5.+32;
-        printf("Humidity: %d.%d %% Temperature: %d.%d *C (%.1f *F)\n",
-            dht11_val[0], dht11_val[1], dht11_val[2], dht11_val[3], farenheit);
+        /* Calculate farenheit */
+        farenheit = dht11_val[2]*9./5.+32;
+
+        /* Save values */
+        dhtsv->humidity = dht11[0];
+        dhtsv->humidity_min = dht11[1];
+        dhtsv->celsius = dhtsv[2];
+        dhtsv->celsius_min = dht11[3];
+        dhtsv->farenheit = farenheit;
+
+        return 1;
     }
-    else printf("Invalid Data!!\n");
-}
-
-
-/* Main function */
-int main(void)
-{
-    int ret;
-
-    /* Set up writing pin */
-    ret = wiringPiSetup();
-
-    /* Check status */
-    if(ret == -1) exit(1);
-
-    /* Main loop (never ends) */
-    while(1)
-    {
-        /* Read dara */
-        dht11_read_val();
-        delay(3000);
-    }
-
+    
     return 0;
 }
