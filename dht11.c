@@ -1,7 +1,7 @@
 /*
  * aquariuni/humidity.c
  *
- * 2015 - IliaUni Robotics TeaM
+ *  Copyleft (C)  2015  IliaUni Robotics TeaM
  *
  * Source for reading data from DHT11 Sensor with 
  * RaspberiPi Board. Use GCC and wiringPi library.
