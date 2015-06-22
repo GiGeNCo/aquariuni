@@ -8,11 +8,7 @@
  */
 
 
-#include <wiringPi.h>  
-#include <stdio.h>  
-#include <stdlib.h>  
-#include <stdint.h>
-#include <wiringPi.h>  
+#include "stdinc.h"
 
 /* Defs */ 
 #define MAX_TIME 85  
