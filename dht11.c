@@ -67,7 +67,7 @@ void dht11_read_val()
         /* Ignore top 3 transistions */
         if((i >= 4) && (i%2 == 0))
         {  
-            dht11_val[j/8] << = 1;  
+            dht11_val[j/8]<<=1;  
             if(counter > 16) dht11_val[j/8] |= 1;  
             j++;  
         }  
