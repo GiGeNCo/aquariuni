@@ -84,10 +84,10 @@ int dht11_read_val(DHTSensorValues *dhtsv)
         farenheit = dht11_val[2]*9./5.+32;
 
         /* Save values */
-        dhtsv->humidity = dht11[0];
-        dhtsv->humidity_min = dht11[1];
-        dhtsv->celsius = dhtsv[2];
-        dhtsv->celsius_min = dht11[3];
+        dhtsv->humidity = dht11_val[0];
+        dhtsv->humidity_min = dht11_val[1];
+        dhtsv->celsius = dht11_val[2];
+        dhtsv->celsius_min = dht11_val[3];
         dhtsv->farenheit = farenheit;
 
         return 1;
