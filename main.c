@@ -16,14 +16,14 @@ int main(void)
 {
     /* Used variables */
     DHTSensorValues dht;
-    int ret;
+    int status;
 
     /* Initialize dht sensor values */
     init_dht_val(&dht);
     
     /* Set up writing pin */
-    ret = wiringPiSetup();
-    if(ret == -1) exit(1);
+    status = wiringPiSetup();
+    if(status == -1) exit(1);
 
     /* Main loop (never ends) */
     while(1)
@@ -31,7 +31,7 @@ int main(void)
         /* Read data from Humidity/Temperature sensor */
         status = dht11_read_val(&dht);
         if (status) 
-            printf("Humidity: %d %% Temperature: %d *C\n", dht.humidity, dht.temperature);
+            printf("Humidity: %d %% Temperature: %d *C\n", dht.humidity, dht.celsius);
         else
             printf("Invalid data from Humidity/Temperature sensor..\n");
 
