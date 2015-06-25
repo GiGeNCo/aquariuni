@@ -6,7 +6,7 @@ Smart Aquarium Project for IliaUni
 
 ```
 git clone git@github.com:kala13x/aquariuni.git
-cd aquariuni
+cd aquariuni/src
 make
 ```
 
