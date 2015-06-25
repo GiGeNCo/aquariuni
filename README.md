@@ -12,7 +12,13 @@ make
 
 ### ბიბლიოთეკები
 პროექტის დასაკომპირებლად, საჭიროა პლატფორმაზე დაინსტალირებული იყოს Raspberi Pi-ს თან მომუშავე ბიბლიოთეკა writingPi.
-დაყენების ინსტრუქცია იხილეთ ამ [ლინკზე](http://wiringpi.com/download-and-install/)
+
+```
+sudo apt-get install git-core
+git clone git://git.drogon.net/wiringPi
+cd wiringPi
+./build
+```
 
 
 ### პროცესი
