@@ -18,5 +18,11 @@ make
 ### პროცესი
 - [x] ტენიანობის სენსორის დრაივერი
 - [x] წნევის სენსორის დრაივერი
+- [x] ეკრანის დრაივერი
 - [ ] კამერის დრაივერი (პროცესშია)
-- [ ] ეკრანის დრაივერი
+
+
+### ეკრანის პინების დაერთება რასპბერიზე
+<p align="center">
+  <img src="https://raw.githubusercontent.com/kala13x/aquariuni/master/img/lcd2pi.png" alt="PCDPins"/>
+</p>
