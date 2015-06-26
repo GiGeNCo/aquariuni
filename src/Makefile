@@ -12,4 +12,4 @@ lcd.o: lcd.h stdinc.h
 .PHONY: clean
 
 clean:
-	$(RM) dht11 $(OBJ)
+	$(RM) main $(OBJ)

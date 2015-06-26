@@ -49,9 +49,13 @@ int main(void)
             lcd_position (0, 1); lcd_puts(humstr);
             delay(5);
         }
-        else
+        else 
+        {
             printf("Invalid data from Humidity/Temperature sensor..\n");
-
+            lcd_position(0, 0);
+            lcd_puts("Ivalid data");
+            delay(5);
+        }
         delay(3000);
     }
 
