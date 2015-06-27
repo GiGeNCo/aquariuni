@@ -9,6 +9,7 @@
 
 #include "stdinc.h"
 #include "dht11.h"
+#include "info.h"
 #include "lcd.h"
 
 /* Main function */
@@ -19,6 +20,9 @@ int main(void)
     char tempstr[128];
     char humstr[128];
     int status, idp = 0;
+
+    /* Greet users */
+    greet("AquariUni");
 
     /* Set up writing pin */
     status = wiringPiSetup();
@@ -52,7 +56,7 @@ int main(void)
         else 
         {
             printf("Invalid data from Humidity/Temperature sensor..\n");
-            if(!idp) 
+            if (!idp) 
             {
                 lcd_position(0, 0);
                 lcd_puts("Ivalid data");

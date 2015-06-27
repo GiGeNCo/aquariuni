@@ -1,6 +1,6 @@
 
 /*
- * aquariuni/lcd.c
+ * src/lcd.c
  *
  *  Copyleft (C) 2015  IliaUni Robotics TeaM  
  * 
@@ -19,7 +19,7 @@ void data_byte(uint8_t data)
 {
     uint8_t i;
 
-    for (i = 0 ; i < 8 ; ++i)
+    for (i = 0; i < 8; ++i)
     {
         digitalWrite (i, (data & 1));
         data >>= 1;
