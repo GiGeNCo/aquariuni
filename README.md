@@ -35,5 +35,5 @@ cd wiringPi
 
 ### ტენიანობის და წნევის სენსორის დაერთება რასპბერიზე
 <p align="center">
-  <img src="https://raw.githubusercontent.com/kala13x/aquariuni/master/img/dht11.jpg" alt="DHTPins"/>
+  <img src="https://raw.githubusercontent.com/kala13x/aquariuni/master/img/dht11pi.jpg" alt="DHTPins"/>
 </p>
