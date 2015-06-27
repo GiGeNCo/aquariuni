@@ -18,7 +18,7 @@ int main(void)
     DHTSensorValues dht;
     char tempstr[128];
     char humstr[128];
-    int status;
+    int status, idp = 0;
 
     /* Set up writing pin */
     status = wiringPiSetup();
@@ -47,13 +47,17 @@ int main(void)
             sprintf(humstr, "Humidity: %d %%", dht.humidity);
             lcd_position (0, 1); lcd_puts(humstr);
             delay(5);
+            idp = 1;
         }
         else 
         {
             printf("Invalid data from Humidity/Temperature sensor..\n");
-            lcd_position(0, 0);
-            lcd_puts("Ivalid data");
-            delay(5);
+            if(!idp) 
+            {
+                lcd_position(0, 0);
+                lcd_puts("Ivalid data");
+                delay(5);
+            }
         }
         delay(3000);
     }
