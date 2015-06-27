@@ -13,6 +13,9 @@
 #include <stdint.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdarg.h>
+#include <limits.h>
+#include <time.h>
 
 /* Dependency includes */
 #include <wiringPi.h> 

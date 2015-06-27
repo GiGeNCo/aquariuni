@@ -9,6 +9,7 @@
 
 #include "stdinc.h"
 #include "dht11.h"
+#include "slog.h"
 #include "info.h"
 #include "lcd.h"
 
@@ -23,6 +24,9 @@ int main(void)
 
     /* Greet users */
     greet("AquariUni");
+
+    /* Initialize logger */
+    init_slog("aquariuni", "config.cfg", 3);
 
     /* Set up writing pin */
     status = wiringPiSetup();
@@ -42,7 +46,7 @@ int main(void)
         if (status) 
         {
             /* Log in terminal */
-            printf("Humidity: %d %% Temperature: %d *C\n", dht.humidity, dht.celsius);
+            slog(0, SLOG_DEBUG, "Humidity: %d %% Temperature: %d *C", dht.humidity, dht.celsius);
 
             /* Write data on display */
             sprintf(tempstr, "Temperature: %d", dht.celsius);
@@ -55,7 +59,7 @@ int main(void)
         }
         else 
         {
-            printf("Invalid data from Humidity/Temperature sensor..\n");
+            slog(0, SLOG_ERROR, "Invalid data from Humidity/Temperature sensor");
             if (!idp) 
             {
                 lcd_position(0, 0);
