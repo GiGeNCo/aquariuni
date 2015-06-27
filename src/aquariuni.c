@@ -1,5 +1,5 @@
 /*
- * aquariuni/main.c
+ * src/aquariuni.c
  *
  *  Copyleft (C)  2015  IliaUni Robotics TeaM
  *
