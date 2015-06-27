@@ -11,7 +11,6 @@
 #include "dht11.h"
 #include "lcd.h"
 
-
 /* Main function */
 int main(void)
 {
@@ -29,8 +28,8 @@ int main(void)
     bzero(tempstr, sizeof(tempstr));
     bzero(humstr, sizeof(humstr));
     init_dht_val(&dht);
-    init_lcd();
-    
+    init_lcd(); sleep(1);
+
     /* Main loop (never ends) */
     while(1)
     {
@@ -42,10 +41,10 @@ int main(void)
             printf("Humidity: %d %% Temperature: %d *C\n", dht.humidity, dht.celsius);
 
             /* Write data on display */
-            sprintf(tempstr, "Temp: %d c", dht.celsius);
+            sprintf(tempstr, "Temperature: %d", dht.celsius);
             lcd_position (0, 0); lcd_puts(tempstr);
             delay(5);
-            sprintf(humstr, "Hum: %d %%", dht.humidity);
+            sprintf(humstr, "Humidity: %d %%", dht.humidity);
             lcd_position (0, 1); lcd_puts(humstr);
             delay(5);
         }

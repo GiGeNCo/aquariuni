@@ -10,7 +10,7 @@
 
 /* Defs */ 
 #define MAX_TIME 85
-#define DHT11PIN 7
+#define DHT11PIN 25
 #define DHT11VAL 5
 
 

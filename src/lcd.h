@@ -8,8 +8,8 @@
 
 
 /* LCD pins */
-#define RS 13
-#define STRB 11
+#define RS 11
+#define STRB 10
 
 /* Commands */
 #define LCD_CLEAR 0x01
