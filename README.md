@@ -32,3 +32,8 @@ cd wiringPi
 <p align="center">
   <img src="https://raw.githubusercontent.com/kala13x/aquariuni/master/img/lcd2pi.png" alt="PCDPins"/>
 </p>
+
+### ტენიანობის და წნევის სენსორის დაერთება რასპბერიზე
+<p align="center">
+  <img src="https://raw.githubusercontent.com/kala13x/aquariuni/master/img/dht11.jpg" alt="DHTPins"/>
+</p>

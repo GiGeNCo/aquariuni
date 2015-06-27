@@ -4,7 +4,7 @@
  *  Copyleft (C)  2015  IliaUni Robotics TeaM
  *
  * Header for reading data from DHT11 Sensor with 
- * RaspberiPi Board. Use GCC and wiringPi library.
+ * RaspberryPi Board. Use GCC and wiringPi library.
  */
 
 
