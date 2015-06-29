@@ -128,7 +128,7 @@ int main(void)
         else 
         {
             close_relay(RELAYPIN3);
-            open_relay(RELAYPIN4);
+            close_relay(RELAYPIN4);
         }
 
         delay(3000);
