@@ -1,5 +1,5 @@
 /*
- * aquariuni/lcd.h
+ * src/lcd.h
  *
  *  Copyleft (C) 2015  IliaUni Robotics TeaM  
  * 

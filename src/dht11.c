@@ -1,5 +1,5 @@
 /*
- * aquariuni/dht11.c
+ * src/dht11.c
  *
  *  Copyleft (C)  2015  IliaUni Robotics TeaM
  *

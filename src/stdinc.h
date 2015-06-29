@@ -1,5 +1,5 @@
 /*
- * aquariuni/stdinc.c
+ * src/stdinc.c
  *
  *  Copyleft (C)  2015  IliaUni Robotics TeaM
  *
