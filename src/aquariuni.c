@@ -42,7 +42,7 @@ int main(void)
     init_lcd(); sleep(1);
 
     /* Initialize relays */
-    init_relay(RELAYPIN1, RELAYPIN2, RELAYPIN3, RELAYPIN4, 0,0,0,0);
+    init_relay(RELAYPIN1, RELAYPIN2, RELAYPIN3, RELAYPIN4, RELAYPIN5 ,0,0,0);
 
     /* Main loop (never ends) */
     while(1)
