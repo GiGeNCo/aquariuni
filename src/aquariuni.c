@@ -39,7 +39,7 @@ int main(void)
     SystemDate date;
     char tempstr[128];
     char humstr[128];
-    int status, idp = 0;
+    int status, idp = 0, lon = 0;
 
     /* Greet users */
     greet("AquariUni");
@@ -108,11 +108,13 @@ int main(void)
         {
             open_relay(RELAYPIN2);
             open_relay(RELAYPIN3);
+            lon = 1;
         }
         else 
         {
             close_relay(RELAYPIN2);
             close_relay(RELAYPIN3);
+            lon = 0;
         }
 
         /* Open humidity relay */
@@ -125,9 +127,9 @@ int main(void)
             open_relay(RELAYPIN4);
             open_relay(RELAYPIN3);
         }
-        else 
+        else
         {
-            close_relay(RELAYPIN3);
+            if (!lon) close_relay(RELAYPIN3);
             close_relay(RELAYPIN4);
         }
 
