@@ -27,6 +27,7 @@ void clean_up(int sig)
     close_relay(RELAYPIN5);
 
     slog(0, SLOG_LIVE, "Cleaning up..");
+    exit(0);
 }
 
 
