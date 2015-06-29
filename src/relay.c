@@ -10,6 +10,7 @@
 #include "stdinc.h"
 #include "relay.h"
 
+
 /* 
  * open_relay - Function opens relay. 
  * Argument is pin which we want to open.
