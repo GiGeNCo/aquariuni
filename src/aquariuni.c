@@ -15,6 +15,21 @@
 #include "lcd.h"
 
 
+/*
+ * clean_up - Function closes all relay when exit;
+ */
+void clean_up(int sig) 
+{
+    close_relay(RELAYPIN1);
+    close_relay(RELAYPIN2);
+    close_relay(RELAYPIN3);
+    close_relay(RELAYPIN4);
+    close_relay(RELAYPIN5);
+
+    slog(0, SLOG_LIVE, "Cleaning up..");
+}
+
+
 /* Main function */
 int main(void)
 {
@@ -34,6 +49,12 @@ int main(void)
     /* Set up writing pin */
     status = wiringPiSetup();
     if(status == -1) exit(1);
+
+    /* Interrupt and termination (ANSI) */
+    signal(SIGINT, clean_up);
+    signal(SIGTERM, clean_up);
+    signal(SIGILL, clean_up);
+    signal(SIGSEGV, clean_up);
 
     /* Initialize modules */
     bzero(tempstr, sizeof(tempstr));

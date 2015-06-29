@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <limits.h>
+#include <signal.h>
 #include <time.h>
 
 /* Dependency includes */
