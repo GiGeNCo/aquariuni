@@ -100,7 +100,7 @@ int main(void)
         }
 
         /* Open lux relay */
-        if (date.hour > 8) open_relay(RELAYPIN1);
+        if (date.hour > 20) open_relay(RELAYPIN1);
         else close_relay(RELAYPIN1);
 
         /* Open warm relay */
