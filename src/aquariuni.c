@@ -20,7 +20,7 @@ int main(void)
 {
     /* Used variables */
     DHTSensorValues dht;
-    SysemDate date;
+    SystemDate date;
     char tempstr[128];
     char humstr[128];
     int status, idp = 0;
