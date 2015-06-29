@@ -66,6 +66,13 @@ typedef struct {
 
 
 /*
+ * get_system_date - Intialize date with system date.
+ * Argument is pointer of SystemDate structure.
+ */
+void get_system_date(SystemDate *mdate);
+
+
+/*
  * Get library version. Function returns version and build number of slog
  * library. Return value is char pointer. Argument min is flag for output
  * format. If min is 0, function returns version in full  format, if flag

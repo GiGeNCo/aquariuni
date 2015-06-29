@@ -9,15 +9,18 @@
 
 #include "stdinc.h"
 #include "dht11.h"
+#include "relay.h"
 #include "slog.h"
 #include "info.h"
 #include "lcd.h"
+
 
 /* Main function */
 int main(void)
 {
     /* Used variables */
     DHTSensorValues dht;
+    SysemDate date;
     char tempstr[128];
     char humstr[128];
     int status, idp = 0;
@@ -38,9 +41,15 @@ int main(void)
     init_dht_val(&dht);
     init_lcd(); sleep(1);
 
+    /* Initialize relays */
+    init_relay(RELAYPIN1, RELAYPIN2, RELAYPIN3, RELAYPIN4, 0,0,0,0);
+
     /* Main loop (never ends) */
     while(1)
     {
+        /* Initialize system date */
+        get_system_date(&date);
+
         /* Read data from Humidity/Temperature sensor */
         status = dht11_read_val(&dht);
         if (status) 
@@ -67,6 +76,39 @@ int main(void)
                 delay(5);
             }
         }
+
+        /* Open lux relay */
+        if (date.hour > 8) open_relay(RELAYPIN1);
+        else close_relay(RELAYPIN1);
+
+        /* Open warm relay */
+        if (dht.celsius < 15) 
+        {
+            open_relay(RELAYPIN2);
+            open_relay(RELAYPIN3);
+        }
+        else 
+        {
+            close_relay(RELAYPIN2);
+            close_relay(RELAYPIN3);
+        }
+
+        /* Open humidity relay */
+        if (dht.humidity > 45) open_relay(RELAYPIN5);
+        else close_relay(RELAYPIN5);
+
+        /* Open cooling relay */
+        if (dht.celsius > 25) 
+        {
+            open_relay(RELAYPIN4);
+            open_relay(RELAYPIN3);
+        }
+        else 
+        {
+            close_relay(RELAYPIN3);
+            open_relay(RELAYPIN4);
+        }
+
         delay(3000);
     }
 
