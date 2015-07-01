@@ -49,25 +49,25 @@ int parse_user_config(const char *fname, UserInputConfig *uic)
         if(strstr(line, "LIGHT_HOUR") != NULL)
         {
             /* Get log level */
-            uic.light_hour = atoi(line+10);
+            uic->light_hour = atoi(line+10);
             ret = 1;
         }
         else if(strstr(line, "CELSIUS_MIN") != NULL)
         {
             /* Get log level */
-            uic.celsius_min = atoi(line+11);
+            uic->celsius_min = atoi(line+11);
             ret = 1;
         }
         else if(strstr(line, "CELSIUS_MAX") != NULL)
         {
             /* Get log type */
-            uic.celsius_max = atoi(line+11);
+            uic->celsius_max = atoi(line+11);
             ret = 1;
         }
         else if(strstr(line, "HUMIDITY_MIN") != NULL)
         {
             /* Get log type */
-            uic.humidity_min = atoi(line+12);
+            uic->humidity_min = atoi(line+12);
             ret = 1;
         }
     }
