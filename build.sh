@@ -20,8 +20,7 @@ sudo make install
 
 # Install watchdog
 cd ..
-cp watchdog.sh /etc/init.d/
-chmod +x /etc/init.d/watchdog.sh
-ln -s /etc/init.d/watchdog.sh /etc/rc.d/
+sudo cp watchdog /etc/init.d/
+sudo chmod +x /etc/init.d/watchdog
 
 echo "Done"
