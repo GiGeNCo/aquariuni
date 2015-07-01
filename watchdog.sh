@@ -1,14 +1,13 @@
 #!/bin/bash
 # Simple watchdog scrip to check process is alove or dead
 
-sleep_time = 30
-
 while [ 1 ]
     do
     if [ "$(pidof aquariuni)" ] 
     then
-        sleep $sleep_time
+        sleep 30
     else
-        aquariuni &> /dev/null &
+        sudo aquariuni &> /dev/null &
+        sleep 30
     fi
 done
