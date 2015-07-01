@@ -2,12 +2,12 @@
 define('FILE', '/aquariuni/config.cfg');
 if (key_exists('submit', $_POST))
 {
-    $data = 'LOGLEVEL 3\n';
-    $data.='LOGTOFILE 0\n';
+    $data = 'LOGLEVEL 3'.PHP_EOL;
+    $data.='LOGTOFILE 0'.PHP_EOL;
     unset($_POST['submit']);
     foreach ($_POST as $k => $v)
     {
-        $data.=$k.' '.$v.'\n';
+        $data.=$k.' '.$v.PHP_EOL;
     }
     file_put_contents(FILE, $data);
 }
@@ -27,9 +27,9 @@ if (key_exists('submit', $_POST))
     </div>
     <div class="form-group">
         <label class="control-label">HUMIDITY_MIN</label>
-        <input type="text"  value=""  name="LIGHT_HOUR" class="form-control">
+        <input type="text"  value=""  name="HUMIDITY_MIN" class="form-control">
     </div>
     <div class="margiv-top-10">
-        <button type="submit" name="submit" class="btn green">შენახვა</button>
+        <button type="submit" name="submit" class="btn green">Save</button>
     </div>
 </form>
