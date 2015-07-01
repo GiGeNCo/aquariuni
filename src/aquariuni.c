@@ -29,11 +29,15 @@
  */
 void clean_up(int sig) 
 {
+    /* Close relays */
     close_relay(LEDS);
     close_relay(LIGHT);
     close_relay(COOLER);
     close_relay(AIRCOOLER);
     close_relay(WARTER);
+
+    /* Clear lcd */
+    clear_lcd();
 
     slog(0, SLOG_LIVE, "Cleaning up..");
     exit(0);

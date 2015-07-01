@@ -7,7 +7,11 @@
  */
 
 
-#include "stdinc.h"
+/* For include header in CPP code */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /* Relay pins */
 #define RELAYPIN1 24
@@ -36,3 +40,9 @@ void open_relay(int pin);
  * Argument is pin which we want to close.
  */
 void close_relay(int pin);
+
+
+/* For include header in CPP code */
+#ifdef __cplusplus
+}
+#endif

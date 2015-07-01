@@ -8,6 +8,11 @@
  */
 
 
+/* For include header in CPP code */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Defs */ 
 #define MAX_TIME 85
 #define DHT11PIN 25
@@ -36,3 +41,9 @@ void init_dht_val(DHTSensorValues *dhtsv);
  * sensor and prints in terminal via printf() function,
  */   
 int dht11_read_val(DHTSensorValues *dhtsv);
+
+
+/* For include header in CPP code */
+#ifdef __cplusplus
+}
+#endif

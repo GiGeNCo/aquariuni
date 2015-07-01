@@ -7,6 +7,12 @@
  */
 
 
+/* For include header in CPP code */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /* User input configuration data */
 typedef struct {
     int light_hour;
@@ -29,3 +35,9 @@ void ini_uic(UserInputConfig *uic);
  * file. Argument uic is pointer of UserInputConfig structure.
  */
 int parse_user_config(static char *fname, UserInputConfig *uic);
+
+
+/* For include header in CPP code */
+#ifdef __cplusplus
+}
+#endif

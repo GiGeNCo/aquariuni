@@ -7,6 +7,12 @@
  */
 
 
+/* For include header in CPP code */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /* LCD pins */
 #define RS 11
 #define STRB 10
@@ -45,7 +51,20 @@ void lcd_puts(char *string);
 
 
 /* 
+ * clear_lcd - This function clears lcd 
+ * display when there is printed something.
+ */
+void clear_lcd();
+
+
+/* 
  * init_lcd - Function initializes lcd diplay and 
  * makes display ready to print something on it.
  */
 void init_lcd(void);
+
+
+/* For include header in CPP code */
+#ifdef __cplusplus
+}
+#endif

@@ -84,6 +84,18 @@ void lcd_puts(char *string)
 
 
 /* 
+ * clear_lcd - This function clears lcd 
+ * display when there is printed something.
+ */
+void clear_lcd() 
+{
+    /* Clear first line */
+    lcd_position(0, 0); lcd_puts("                ");
+    lcd_position(0, 1); lcd_puts("                ");
+}
+
+
+/* 
  * init_lcd - Function initializes lcd diplay and 
  * makes display ready to print something on it.
  */
