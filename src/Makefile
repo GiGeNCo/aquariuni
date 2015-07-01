@@ -1,6 +1,6 @@
 LIB = -L/usr/local/lib -lwiringPi
 CFLAGS = -g -O2 -Wall 
-OBJ = aquariuni.o dht11.o dbworks.o relay.o lcd.o slog.o info.o
+OBJ = aquariuni.o dht11.o dbwork.o relay.o lcd.o slog.o info.o
 
 BUILD = ../bin
 INSTALL = /usr/local/bin
@@ -24,7 +24,7 @@ install:
 
 aquariuni.o: dht11.h lcd.h slog.h info.h stdinc.h
 dht11.o: dht11.h stdinc.h
-dbworks.o: dbworks.h stdinc.h
+dbwork.o: dbwork.h stdinc.h
 relay.o: relay.h stdinc.h
 lcd.o: lcd.h stdinc.h
 slog.o: slog.h stdinc.h
