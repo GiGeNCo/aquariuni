@@ -25,7 +25,8 @@
 
 
 /*
- * clean_up - Function closes all relay when exit;
+ * clean_up - Function closes everything 
+ * if there is something error occured. 
  */
 void clean_up(int sig) 
 {
