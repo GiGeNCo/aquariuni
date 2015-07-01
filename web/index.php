@@ -3,7 +3,6 @@ define('FILE', '/aquariuni/config.cfg');
 if (key_exists('submit', $_POST))
 {
     $data = 'LOGLEVEL 3'.PHP_EOL;
-    $data.='LOGTOFILE 0'.PHP_EOL;
     unset($_POST['submit']);
     foreach ($_POST as $k => $v)
     {
@@ -13,6 +12,10 @@ if (key_exists('submit', $_POST))
 }
 ?>
 <form method="POST">
+    <div class="form-group">
+        <label class="control-label">LOGTOFILE</label>
+        <input type="text"  value=""  name="LOGTOFILE" class="form-control">
+    </div>
     <div class="form-group">
         <label class="control-label">LIGHT_HOUR</label>
         <input type="text"  value=""  name="LIGHT_HOUR" class="form-control">
