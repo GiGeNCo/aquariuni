@@ -29,7 +29,7 @@ void ini_uic(UserInputConfig *uic)
  * parse_user_config - This function parses values from config 
  * file. Argument uic is pointer of UserInputConfig structure.
  */
-int parse_user_config(static char *fname, UserInputConfig *uic) 
+int parse_user_config(const char *fname, UserInputConfig *uic) 
 {
     /* Used variables */
     FILE *file;
