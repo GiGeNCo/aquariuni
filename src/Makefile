@@ -4,6 +4,8 @@ OBJ = aquariuni.o dht11.o relay.o lcd.o slog.o info.o
 
 BUILD = ../bin
 INSTALL = /usr/local/bin
+CONFIG = /aquariuni
+APACHE = /var/www
 
 all: $(OBJ)
 	$(CC) $(CFLAGS) -o aquariuni $(OBJ) $(LIB)
@@ -14,7 +16,11 @@ build:
 
 install:
 	@test -d $(INSTALL) || mkdir $(INSTALL)
+	@test -d $(CONFIG) || mkdir $(CONFIG)
+	@test -d $(APACHE) || mkdir $(APACHE)
 	@install -m 0755 aquariuni $(INSTALL)/
+	@install -m 777 config.cfg $(CONFIG)/
+	@install -m 777 ../web/index.php $(APACHE)/
 
 aquariuni.o: dht11.h lcd.h slog.h info.h stdinc.h
 dht11.o: dht11.h stdinc.h

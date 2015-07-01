@@ -8,8 +8,8 @@
 
 
 /* C includes */
-#include <stdio.h>  
-#include <stdlib.h>  
+#include <stdio.h> 
+#include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
 #include <unistd.h>
@@ -20,3 +20,6 @@
 
 /* Dependency includes */
 #include <wiringPi.h> 
+
+/* Config file */
+#define CONFIG_FILE "/aquariuni/config.cfg"

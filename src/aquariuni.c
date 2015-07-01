@@ -59,7 +59,7 @@ int main(void)
     greet("AquariUni");
 
     /* Initialize logger */
-    init_slog("aquariuni", "config.cfg", 3);
+    init_slog("aquariuni", CONFIG_FILE, 3);
 
     /* Set up writing pin */
     status = wiringPiSetup();
@@ -86,7 +86,7 @@ int main(void)
     init_relay(RELAYPIN1, RELAYPIN2, RELAYPIN3, RELAYPIN4, RELAYPIN5, 0,0,0);
 
     /* Parse config file */
-    status = parse_user_config("config.cfg", &uic);
+    status = parse_user_config(CONFIG_FILE, &uic);
     if (!status) slog(0, SLOG_WARN, "Can not parse config file");
 
     /* Main loop (never ends) */
@@ -110,7 +110,7 @@ int main(void)
 
             /* Print humidity */
             sprintf(humstr, "Humidity: %d %%", dht.humidity);
-            lcd_position (0, 1); 
+            lcd_position (0, 1);
             lcd_puts(humstr); delay(5);
             invalid_data = 1;
         }
@@ -159,6 +159,10 @@ int main(void)
             close_relay(AIRCOOLER);
         }
 
+        /* Parse config values again */
+        parse_user_config(CONFIG_FILE, &uic);
+
+        /* Delay */
         delay(3000);
     }
 
