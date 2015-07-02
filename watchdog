@@ -1,5 +1,5 @@
 #!/bin/bash
-# Simple watchdog scrip to check process is alove or dead
+# Simple watchdog script to check process is alive or dead
 
 while [ 1 ]
     do

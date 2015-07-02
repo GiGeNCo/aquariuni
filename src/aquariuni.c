@@ -79,7 +79,7 @@ int main(void)
     /* Initialize modules */
     bzero(tempstr, sizeof(tempstr));
     bzero(humstr, sizeof(humstr));
-    ini_uic(&uic);
+    init_uic(&uic);
     init_dht_val(&dht);
     init_lcd(); sleep(1);
 

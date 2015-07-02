@@ -23,11 +23,11 @@ typedef struct {
 
 
 /* 
- * ini_uic - This function initializes default 
+ * init_uic - This function initializes default 
  * config values for user inpute data. Argument
  * uic is pointer of UserInputConfig structure.
  */
-void ini_uic(UserInputConfig *uic);
+void init_uic(UserInputConfig *uic);
 
 
 /* 
