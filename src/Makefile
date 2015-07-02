@@ -20,7 +20,7 @@ install:
 	@test -d $(APACHE) || mkdir $(APACHE)
 	@install -m 0755 aquariuni $(INSTALL)/
 	@install -m 777 config.cfg $(CONFIG)/
-	@install -m 777 ../web/index.php $(APACHE)/
+	@install -m 0644 ../web/index.php $(APACHE)/
 
 aquariuni.o: dht11.h lcd.h slog.h info.h stdinc.h
 dht11.o: dht11.h stdinc.h
