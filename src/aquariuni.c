@@ -24,6 +24,17 @@
 #define WARTER RELAYPIN5
 
 
+/* System flags */
+typedef struct {
+    short invalid_data;
+    short aircooler_on;
+    short cooler_on;
+    short water_on;
+    short light_on;
+    short leds_on;
+} SystemFlags;
+
+
 /*
  * clean_up - Function closes everything 
  * if there is something error occured. 
@@ -45,16 +56,32 @@ void clean_up(int sig)
 }
 
 
+/*
+ * init_flags - Initialize system flags. Function sets 
+ * zero values for each SystemFlags structure members.
+ */
+void init_flags(SystemFlags *flags) 
+{
+    flags->invalid_data = 0;
+    flags->aircooler_on = 0;
+    flags->cooler_on = 0;
+    flags->water_on = 0;
+    flags->light_on = 0;
+    flags->leds_on = 0;
+}
+
+
 /* Main function */
 int main(void)
 {
     /* Used variables */
     UserInputConfig uic;
     DHTSensorValues dht;
+    SystemFlags flags;
     SystemDate date;
     char tempstr[128];
     char humstr[128];
-    int status, invalid_data = 0, light_on = 0;
+    int status;
 
     /* Greet users */
     greet("AquariUni");
@@ -79,6 +106,7 @@ int main(void)
     /* Initialize modules */
     bzero(tempstr, sizeof(tempstr));
     bzero(humstr, sizeof(humstr));
+    init_flags(&flags);
     init_uic(&uic);
     init_dht_val(&dht);
     init_lcd(); sleep(1);
@@ -113,12 +141,12 @@ int main(void)
             sprintf(humstr, "Humidity: %d %%", dht.humidity);
             lcd_position (0, 1);
             lcd_puts(humstr); delay(5);
-            invalid_data = 1;
+            flags.invalid_data = 1;
         }
         else 
         {
             slog(0, SLOG_ERROR, "Invalid data from Humidity/Temperature sensor");
-            if (!invalid_data) 
+            if (!flags.invalid_data) 
             {
                 lcd_position(0, 0);
                 lcd_puts("Ivalid data");
@@ -127,37 +155,95 @@ int main(void)
         }
 
         /* Open lux relay */
-        if (date.hour > uic.light_hour) open_relay(LEDS);
-        else close_relay(LEDS);
+        if (date.hour > uic.light_hour) 
+        {
+            open_relay(LEDS);
+            if (!flags.leds_on)
+                slog(0, SLOG_INFO, "Enabling leds for light");
+
+            /* Set flag */
+            flags.leds_on = 1;
+        }
+        else 
+        {
+            close_relay(LEDS);
+            if (flags.leds_on)
+                slog(0, SLOG_INFO, "Enabling leds for light");
+
+            /* Set flag */
+            flags.leds_on = 1;
+        }
 
         /* Open warm relay */
         if (dht.celsius < uic.celsius_min) 
         {
             open_relay(LIGHT);
             open_relay(COOLER);
-            light_on = 1;
+            if (!flags.light_on)
+                slog(0, SLOG_INFO, "Enabling warming system");
+
+            /* Set flags */
+            flags.light_on = 1;
+            flags.cooler_on = 1;
         }
         else 
         {
             close_relay(LIGHT);
             close_relay(COOLER);
-            light_on = 0;
+            if (flags.light_on)
+                slog(0, SLOG_INFO, "Disabling warming system");
+
+            /* Set flags */
+            flags.light_on = 0;
+            flags.cooler_on = 0;
         }
 
         /* Open humidity relay */
-        if (dht.humidity < uic.humidity_min) open_relay(WARTER);
-        else close_relay(WARTER);
+        if (dht.humidity < uic.humidity_min) 
+        {
+            open_relay(WARTER);
+            if (!flags.water_on)
+                slog(0, SLOG_INFO, "Enabling water system");
+
+            /* Set flag */
+            flags.water_on = 1;
+        }
+        else 
+        {
+            close_relay(WARTER);
+            if (flags.water_on)
+                slog(0, SLOG_INFO, "Disabling water system");
+
+            /* Set flag */
+            flags.water_on = 0;
+        }
 
         /* Open cooling relay */
         if (dht.celsius > uic.celsius_max) 
         {
             open_relay(AIRCOOLER);
             open_relay(COOLER);
+            if (!flags.aircooler_on)
+                slog(0, SLOG_INFO, "Enabling cooling system");
+
+            /* Set flags */
+            flags.aircooler_on = 1;
+            flags.cooler_on = 1;
         }
         else
         {
-            if (!light_on) close_relay(COOLER);
+            if (!flags.light_on) 
+            {
+                close_relay(COOLER);
+                flags.cooler_on = 0;
+            }
+
             close_relay(AIRCOOLER);
+            if (flags.aircooler_on)
+                slog(0, SLOG_INFO, "Disabling cooling system");
+
+            /* Set flag */
+            flags.aircooler_on = 0;
         }
 
         /* Parse config values again */
