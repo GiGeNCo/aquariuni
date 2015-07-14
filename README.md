@@ -1,14 +1,24 @@
 # Aquariuni
-Smart Aquarium Project for IliaUni
+Smart Aquarium Project for IliaUni.
+პროექტი წარმოადგენს ჭკვიან ტერარიუმს, რომელციც ავტომატურად უქმნის იდეალურ გარემო-პირობებს მასში მოთავსებულ მცენარეს ან/და ცხოველს.
 
 ### კომპილაცია
-კომპილაცია შესაძლებელია Makefile-ით
+კომპილაცია შესაძლებელია Makefile-ით ან/და build სკრიპტით.
 
+მეიქფაილის შემთხვევაში:
 ```
-git clone git@github.com:kala13x/aquariuni.git
+git clone https://github.com/kala13x/aquariuni.git
 cd aquariuni/src
 make
 ```
+სკრიპტის შემთხვევაში:
+```
+git clone https://github.com/kala13x/aquariuni.git
+cd aquariuni
+chmod +x build.sh
+./build.sh
+```
+სკრიპტი დაბულდავს მთლიან პროექტს და დააინსტალირებს მას თქვენს სისტემაზე, ასევე გამშვებ ფაილს გადააკოპირებს '/etc/init.d' დირექტორიაში რადგან სისტემის ჩართვისას (startup) ავტომატურად მოხდეს პროგრამის გაშვება.
 
 ### ბიბლიოთეკები
 პროექტის დასაკომპირებლად, საჭიროა პლატფორმაზე დაინსტალირებული იყოს Raspberi Pi-ს თან მომუშავე ბიბლიოთეკა writingPi.
@@ -20,20 +30,16 @@ cd wiringPi
 ./build
 ```
 
-
 ### პროცესი
 - [x] ტენიანობის სენსორის დრაივერი
 - [x] ტემპერატურის სენსორის დრაივერი
 - [x] ეკრანის დრაივერი
-- [ ] კამერის დრაივერი (პროცესშია)
+- [x] რელეების მართვის დრაივერი
 
+### კავშირი
+დივაისების პინებით რასპბერიზე დაერთების სქემები და სურათები შეგიძლიათ ნახოთ ამავე პროექტის img დირექტორიაში. 
 
-### ეკრანის პინების დაერთება რასპბერიზე
+### პროდუქტის სურათი
 <p align="center">
-  <img src="https://raw.githubusercontent.com/kala13x/aquariuni/master/img/lcd2pi.png" alt="PCDPins"/>
-</p>
-
-### ტენიანობის და წნევის სენსორის დაერთება რასპბერიზე
-<p align="center">
-  <img src="https://raw.githubusercontent.com/kala13x/aquariuni/master/img/dht11pi.jpg" alt="DHTPins"/>
+  <img src="https://raw.githubusercontent.com/kala13x/aquariuni/master/img/product.png" alt="Product"/>
 </p>
