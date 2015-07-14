@@ -168,10 +168,10 @@ int main(void)
         {
             close_relay(LEDS);
             if (flags.leds_on)
-                slog(0, SLOG_INFO, "Enabling leds for light");
+                slog(0, SLOG_INFO, "Disabling leds for light");
 
             /* Set flag */
-            flags.leds_on = 1;
+            flags.leds_on = 0;
         }
 
         /* Open warm relay */
